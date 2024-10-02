@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Read this before creating packages: https://chocolatey.org/docs/create-packages --><!-- It is especially important to read the above link to understand additional requirements when publishing packages to the community feed aka dot org (https://chocolatey.org/packages). --><!-- Test your packages in a test environment: https://github.com/chocolatey/chocolatey-test-environment --><!--
+This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Reference. Chocolatey uses a special version of NuGet.Core that allows us to do more than was initially possible. As such there are certain things to be aware of:
+
+* the package xmlns schema url may cause issues with nuget.exe
+* Any of the following elements can ONLY be used by choco tools - projectSourceUrl, docsUrl, mailingListUrl, bugTrackerUrl, packageSourceUrl, provides, conflicts, replaces 
+* nuget.exe can still install packages with those elements but they are ignored. Any authoring tools or commands will error on those elements 
+--><!-- You can embed software files directly into packages, as long as you are not bound by distribution rights. --><!-- * If you are an organization making private packages, you probably have no issues here --><!-- * If you are releasing to the community feed, you need to consider distribution rights. --><!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata><!-- == PACKAGE SPECIFIC SECTION == --><!-- This section is about this package, although id and version have ties back to the software --><!-- id is lowercase and if you want a good separator for words, use '-', not '.'. Dots are only acceptable as suffixes for certain types of packages, e.g. .install, .portable, .extension, .template --><!-- If the software is cross-platform, attempt to use the same id as the debian/rpm package(s) if possible. -->
+    <id>alloy</id><!-- version should MATCH as closely as possible with the underlying software --><!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages --><!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
+    <version>{{PackageVersion}}</version>
+    <packageSourceUrl>https://github.com/ferventcoder/chocolatey-packages</packageSourceUrl><!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
+    <owners>Daniel Komaz</owners><!-- ============================== --><!-- == SOFTWARE SPECIFIC SECTION == --><!-- This section is about the software itself -->
+    <title>Alloy</title>
+    <authors>Grafana Labs</authors>
+    <projectUrl>https://grafana.com/docs/alloy/latest/</projectUrl>
+    <iconUrl>https://grafana.com/media/docs/alloy/alloy_icon.png</iconUrl>
+    <licenseUrl>https://github.com/grafana/alloy/blob/main/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/grafana/alloy</projectSourceUrl>
+    <docsUrl>https://grafana.com/docs/alloy/latest/</docsUrl>
+    <mailingListUrl>https://groups.google.com/forum/#!forum/grafana-alloy-team</mailingListUrl>
+    <bugTrackerUrl>https://github.com/grafana/alloy/issues</bugTrackerUrl>
+    <tags>alloy monitoring logs tracing agent grafana metrics</tags>
+    <summary>Grafana Alloy</summary>
+    <description>
+Alloy is a flexible, high performance, vendor-neutral distribution of the OpenTelemetry (OTel) Collector. It’s fully compatible with the most popular open source observability standards such as OpenTelemetry (OTel) and Prometheus.
+
+Alloy focuses on ease-of-use and the ability to adapt to the needs of power users.
+
+### Package Specifics
+The package uses default install options.
+
+#### Package Parameters
+The following package parameters can be set:
+
+ * `/CONFIG=<path>` - Path to the configuration file. Default: $INSTDIR\config.alloy
+ * `/DISABLEREPORTING=<yes no="no">` - Disable data collection. Default: no
+ * `/DISABLEPROFILING=<yes no="no">` - Disable profiling endpoint. Default: no
+ * `/ENVIRONMENT=&quot;KEY=VALUE\0KEY2=VALUE2&quot;` - Define environment variables for Windows Service. Default: ``
+
+These parameters can be passed to the installer with the use of `-params`.
+For example: `-params &apos;&quot;/DISABLEREPORTING=yes&quot;&apos;`.
+
+**Please Note**: This is an automatically updated package. If you find it is 
+out of date by more than a day or two, please contact the maintainer(s) and
+let them know the package is no longer updating correctly.
+    </yes>
+        </yes>
+      </path>
+    </description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools"/>
+  </files>
+</package><!-- character encoding: “UTF-8” -->
