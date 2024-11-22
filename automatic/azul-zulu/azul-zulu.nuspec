@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>zulu</id>
+    <id>azul-zulu</id>
     <version>23.30.13.0</version>
     <packageSourceUrl>https://github.com/danielkomaz/chocolatey-packages/tree/master/automatic/zulu</packageSourceUrl>
-    <title>Zulu</title>
+    <title>Azul Zulu</title>
     <authors>Azul Systems</authors>
-    <owners>Jammie</owners>
+    <owners>Daniel Komaz</owners>
     <projectUrl>https://www.azul.com/products/zulu-enterprise/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/danielkomaz/chocolatey-packages/icons/zulu.svg</iconUrl>
     <licenseUrl>https://www.azul.com/products/zulu-and-zulu-enterprise/zulu-terms-of-use/</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/zulu-openjdk</projectSourceUrl>
+    <docsUrl>https://docs.azul.com/core/release-notes</docsUrl>
+    <mailingListUrl>https://www.azul.com/contact-us/</mailingListUrl>
+    <bugTrackerUrl>https://www.azul.com/support/</bugTrackerUrl>
     <description>Zulu is a certified build of OpenJDK that is fully compliant with the Java SE standard. Zulu is 100% open source and freely downloadable. Now Java developers, system administrators and end users can enjoy the full benefits of open source Java with deployment flexibility and control over upgrade timing.</description>
     <summary>Zulu is a certified build of OpenJDK that is fully compliant with the Java SE standard</summary>
     <releaseNotes>http://docs.azul.com/zulu/zulurelnotes/</releaseNotes>
-    <tags>java java14 jdk jdk14 openjdk zulu admin</tags>
+    <tags>java java23 jdk jdk23 openjdk zulu azul admin</tags>
   </metadata>
   <files>
     <file src="tools\**" target="tools"/>
