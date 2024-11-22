@@ -14,7 +14,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <title>Alloy</title>
     <authors>Grafana Labs</authors>
     <projectUrl>https://grafana.com/docs/alloy/latest/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/danielkomaz/chocolatey-packages@master/icons/grafana-alloy.svg</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/danielkomaz/chocolatey-packages/icons/grafana-alloy.svg</iconUrl>
     <licenseUrl>https://github.com/grafana/alloy/blob/main/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/grafana/alloy</projectSourceUrl>
@@ -40,7 +40,7 @@ The following package parameters can be set:
  * `/ENVIRONMENT` - Define environment variables for Windows Service. Example: KEY=VALUE\0KEY2=VALUE2 Default: ``
 
 These parameters can be passed to the installer with the use of `-params`.
-For example: `-params '"/DISABLEREPORTING=yes"'`.
+For example: `-params &apos;&quot;/DISABLEREPORTING=yes&quot;&apos;`.
 
 **Please Note**: This is an automatically updated package. If you find it is 
 out of date by more than a day or two, please contact the maintainer(s) and
@@ -51,6 +51,6 @@ let them know the package is no longer updating correctly.
     </description>
   </metadata>
   <files>
-    <file src="tools\**" target="tools" />
+    <file src="tools\**" target="tools"/>
   </files>
 </package><!-- character encoding: “UTF-8” -->
