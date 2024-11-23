@@ -5,9 +5,7 @@ $url64 = 'https://github.com/grafana/alloy/releases/download/v1.5.0/alloy-instal
 $version = '1.5.0'
 $fileName = 'alloy-installer-windows-amd64.exe'
 $unzipDestination = (Split-Path -Parent $MyInvocation.MyCommand.Definition)
-$checksum_download = 'https://github.com/grafana/alloy/releases/download/v1.5.0/SHA256SUMS'
-$checksum_content = Invoke-RestMethod -Uri $checksum_download
-$checksum = ($checksum_content -split "`n" | Where-Object { $_ -like "*$fileName" }) -split " " | Select-Object -First 1
+$checksum64 = '59b2d8bd745d1fef88f04ed79133ee87789be6d796735aed5fe5e062e94458f7'
 
 # Download the package
 $zipPackageArgs = @{
@@ -18,9 +16,9 @@ $zipPackageArgs = @{
   silentArgs     = "/S"
   validExitCodes = @(0, 1223)
   softwareName   = 'Grafana Alloy'
-  checksum       = $checksum
+  checksum       = $checksum64
   checksumType   = 'sha256'
-  checksum64     = $checksum
+  checksum64     = $checksum64
   checksumType64 = 'sha256'
   version        = $version
   unzipLocation  = $unzipDestination

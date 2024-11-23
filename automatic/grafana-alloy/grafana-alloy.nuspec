@@ -31,10 +31,10 @@ The following package parameters can be set:
  * `/CONFIG=&lt;path&gt;` - Path to the configuration file. Default: $INSTDIR\config.alloy
  * `/DISABLEREPORTING=&lt;yes|no&gt;` - Disable data collection. Default: no
  * `/DISABLEPROFILING=&lt;yes|no&gt;` - Disable profiling endpoint. Default: no
- * `/ENVIRONMENT=&apos;KEY=VALUE\0KEY2=VALUE2&apos;` - Define environment variables for Windows Service. Default: ``
+ * `/ENVIRONMENT='KEY=VALUE\0KEY2=VALUE2'` - Define environment variables for Windows Service. Default: ``
 
 These parameters can be passed to the installer with the use of `-params`.
-For example: `-params &apos;&quot;/DISABLEREPORTING=yes&quot;&apos;`.
+For example: `-params '"/DISABLEREPORTING=yes"'`.
 
 **Please Note**: This is an automatically updated package. If you find it is 
 out of date by more than a day or two, please contact the maintainer(s) and
@@ -48,6 +48,6 @@ let them know the package is no longer updating correctly.
     </description>
   </metadata>
   <files>
-    <file src="tools\**" target="tools"/>
+    <file src="tools\**" target="tools" />
   </files>
 </package><!-- character encoding: “UTF-8” -->
