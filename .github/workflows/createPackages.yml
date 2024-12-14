@@ -13,12 +13,13 @@ jobs:
     runs-on: windows-latest
 
     env:
-      "Env:api_key": ${{ secrets.CHOCO_API_KEY }}
-      "Env:gist_id": ${{ secrets.GIST_ID }}
-      "Env:gist_id_test": ${{ secrets.GIST_ID_TEST }}
-      "Env:github_user_repo": ${{ secrets.GH_USER_REPO }}
-      "Env:github_api_key": ${{ secrets.GH_API_KEY }}
-      "Env:au_Push": ${{ secrets.AU_PUSH }}
+      "api_key": ${{ secrets.CHOCO_API_KEY }}
+      "gist_id": ${{ secrets.GIST_ID }}
+      "gist_id_test": ${{ secrets.GIST_ID_TEST }}
+      "github_user_repo": ${{ secrets.GH_USER_REPO }}
+      "github_api_key": ${{ secrets.GH_API_KEY }}
+      "au_Push": ${{ secrets.AU_PUSH }}
+      "actions_test": ${{ secrets.ACTIONS_TEST }}
 
     steps:
       - name: Checkout repository
@@ -27,6 +28,11 @@ jobs:
       - name: Set up Chocolatey
         run: |
           Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+      - name: pwsh-test
+        shell: pwsh
+        run: |
+          Write-Host "$env:actions_test"
 
       - name: setup au
         run: |
