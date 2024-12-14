@@ -1,4 +1,4 @@
-Import-Module au
+Import-Module AU
 
 Set-Location $PSScriptRoot
 
@@ -36,4 +36,4 @@ function global:au_GetLatest {
     return $Latest
 }
 
-Update-Package
+Update-Package -ChecksumFor 64

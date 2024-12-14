@@ -40,12 +40,6 @@ For example: `-params &apos;&quot;/DISABLEREPORTING=yes&quot;&apos;`.
 **Please Note**: This is an automatically updated package. If you find it is 
 out of date by more than a day or two, please contact the maintainer(s) and
 let them know the package is no longer updating correctly.
-    &lt;/yes&gt;
-        &lt;/yes&gt;
-      &lt;/path&gt;
-    &lt;/yes&gt;
-        &lt;/yes&gt;
-      &lt;/path&gt;
     </description>
   </metadata>
   <files>
