@@ -1,0 +1,37 @@
+name: Build Chocolatey Packages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      "Env:api_key": ${{ secrets.CHOCO_API_KEY }}
+      "Env:gist_id": ${{ secrets.GIST_ID }}
+      "Env:gist_id_test": ${{ secrets.GIST_ID_TEST }}
+      "Env:github_user_repo": ${{ secrets.GH_USER_REPO }}
+      "Env:github_api_key": ${{ secrets.GH_API_KEY }}
+      "Env:au_Push": ${{ secrets.AU_PUSH }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Chocolatey
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+      - name: setup au
+        run: |
+          .\setup\au_setup.ps1
+
+      - name: update and push all packages
+        run: |
+          .\update_all.ps1
