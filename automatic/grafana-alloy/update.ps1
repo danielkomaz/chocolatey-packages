@@ -1,5 +1,7 @@
 Import-Module AU
 
+$oldLocation = Get-Location
+
 Set-Location $PSScriptRoot
 
 function global:au_SearchReplace {
@@ -37,3 +39,5 @@ function global:au_GetLatest {
 }
 
 Update-Package -ChecksumFor 64
+
+Set-Location $oldLocation

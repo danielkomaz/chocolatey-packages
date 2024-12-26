@@ -1,11 +1,11 @@
 ﻿$ErrorActionPreference = 'Stop';
 
 $packageName = 'grafana-alloy'
-$url64 = 'https://github.com/grafana/alloy/releases/download/v1.5.0/alloy-installer-windows-amd64.exe.zip'
-$version = '1.5.0'
+$url64 = 'https://github.com/grafana/alloy/releases/download/v1.5.1/alloy-installer-windows-amd64.exe.zip'
+$version = '1.5.1'
 $fileName = 'alloy-installer-windows-amd64.exe'
 $unzipDestination = (Split-Path -Parent $MyInvocation.MyCommand.Definition)
-$checksum64 = '59b2d8bd745d1fef88f04ed79133ee87789be6d796735aed5fe5e062e94458f7'
+$checksum64 = '8db7ee540c9eb60222752259516a1f660a0eec1a525c4a116481c5b491cc7fe9'
 
 # Download the package
 $zipPackageArgs = @{
@@ -63,4 +63,13 @@ Write-Host "Silent arguments: $($silentArgs)"
 
 $silentArgs = $silentArgs.Split()
 
-& "$downloadedFilePath" $silentArgs
+$packageArgs = @{
+  packageName    = $packageName
+  fileType       = 'exe'
+  file           = $downloadedFilePath
+  silentArgs     = $silentArgs
+  validExitCodes = @(0, 3010, 1641)
+  softwareName   = 'Alloy'
+}
+
+Install-ChocolateyInstallPackage @packageArgs
