@@ -1,11 +1,11 @@
 ﻿$ErrorActionPreference = 'Stop';
 
 $packageName = 'grafana-alloy'
-$url64 = 'https://github.com/grafana/alloy/releases/download/v1.5.1/alloy-installer-windows-amd64.exe.zip'
-$version = '1.5.1'
+$url64 = 'https://github.com/grafana/alloy/releases/download/v1.7.5/alloy-installer-windows-amd64.exe.zip'
+$version = '1.7.5'
 $fileName = 'alloy-installer-windows-amd64.exe'
 $unzipDestination = (Split-Path -Parent $MyInvocation.MyCommand.Definition)
-$checksum64 = '8db7ee540c9eb60222752259516a1f660a0eec1a525c4a116481c5b491cc7fe9'
+$checksum64 = '33902d1a94ffb9713a2591a7f0fcc9d61698bcd3e441ae91a3de24470cabb75c'
 
 # Download the package
 $zipPackageArgs = @{

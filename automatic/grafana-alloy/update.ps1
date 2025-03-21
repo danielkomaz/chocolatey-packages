@@ -20,7 +20,7 @@ function global:au_GetLatest {
     $releases = "https://api.github.com/repos/$repo/releases"
 
     Write-Host Determining latest release
-    $tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
+    $tag = (Invoke-WebRequest $releases | ConvertFrom-Json )[0].tag_name
 
     # remove the v from the tag
     $version = $tag.Substring(1)
