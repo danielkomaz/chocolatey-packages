@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>grafana-alloy</id>
-    <version>1.7.5</version>
+    <version>1.9.1</version>
     <packageSourceUrl>https://github.com/danielkomaz/chocolatey-packages/tree/master/automatic/grafana-alloy</packageSourceUrl>
     <owners>Daniel Komaz</owners>
     <title>Alloy</title>
