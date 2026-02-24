@@ -52,7 +52,7 @@ jobs:
 
       - name: Push chocolatey packages
         run: |
-          choco push (Get-ChildItem -Filter "*.nupkg").FullName --source https://push.chocolatey.org/ --api-key $env:CHOCO_API_KEY
+          choco push (Get-ChildItem -Filter "*.nupkg").FullName --source https://push.chocolatey.org/ --api-key=$env:CHOCO_API_KEY
 
       - name: Commit and push changes
         run: |
