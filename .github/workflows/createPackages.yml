@@ -34,6 +34,30 @@ jobs:
         run: |
           .\setup\au_setup.ps1
 
-      - name: update and push all packages
+      - name: Run update.ps1 in each automatic/* subdirectory
+        shell: pwsh
         run: |
-          .\update_all.ps1
+          $ErrorActionPreference = 'Stop'
+          Set-Location "$env:GITHUB_WORKSPACE/automatic"
+
+          Get-ChildItem -Directory | ForEach-Object {
+            $updateScript = Join-Path $_.FullName 'update.ps1'
+            if (Test-Path $updateScript) {
+              Write-Host "Running: $updateScript"
+              & $updateScript
+            } else {
+              Write-Host "Skipping $($_.Name): no update.ps1"
+            }
+          }
+
+      - name: Push chocolatey packages
+        run: |
+          choco push (Get-ChildItem -Filter "*.nupkg").FullName --source https://push.chocolatey.org/
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update Chocolatey packages" || echo "No changes to commit"
+          git push origin main
