@@ -56,10 +56,10 @@ jobs:
               choco push $file.FullName --source https://push.chocolatey.org/ --api-key=$env:api_key
           }
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Update Chocolatey packages" || echo "No changes to commit"
-          git push origin main
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GH_API_KEY }}
+          commit-message: "Update Chocolatey packages"
+          title: "Update Chocolatey packages"
+          body: "This PR updates the Chocolatey packages with the latest versions."
