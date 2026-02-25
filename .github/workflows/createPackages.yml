@@ -55,11 +55,3 @@ jobs:
           foreach ($file in Get-ChildItem -Filter "*.nupkg" -Recurse) {
               choco push $file.FullName --source https://push.chocolatey.org/ --api-key=$env:api_key
           }
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.GH_API_KEY }}
-          commit-message: "Update Chocolatey packages"
-          title: "Update Chocolatey packages"
-          body: "This PR updates the Chocolatey packages with the latest versions."
