@@ -25,6 +25,13 @@ function global:au_GetLatest {
     # remove the v from the tag
     $version = $tag.Substring(1)
 
+    # Exit if version is release candidate
+    if ($version -like "*-rc*") {
+        Write-Host "Latest version is a release candidate. Skipping update."
+        exit 0
+    }
+
+    # Construct the download URL for the file
     $download = "https://github.com/$repo/releases/download/$tag/$file"
 
     # Get the checksum file content
