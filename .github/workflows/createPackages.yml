@@ -14,6 +14,10 @@ jobs:
   build:
     runs-on: windows-latest
 
+    permissions:
+      contents: write
+      pull-requests: write
+
     env:
       "api_key": ${{ secrets.CHOCO_API_KEY }}
       "gist_id": ${{ secrets.GIST_ID }}
@@ -55,3 +59,17 @@ jobs:
           foreach ($file in Get-ChildItem -Filter "*.nupkg" -Recurse) {
               choco push $file.FullName --source https://push.chocolatey.org/ --api-key=$env:api_key
           }
+
+      - name: Create pull request for updated package sources
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update package sources with latest version/checksum"
+          title: "Automated package updates"
+          body: "Automated update of nuspec/install scripts with the latest upstream version, URL and checksum."
+          branch: automated-package-updates
+          delete-branch: true
+          add-paths: |
+            automatic/**/*.nuspec
+            automatic/**/tools/**
+
